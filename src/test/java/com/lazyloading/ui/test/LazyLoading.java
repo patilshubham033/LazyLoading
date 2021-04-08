@@ -32,11 +32,12 @@ public class LazyLoading {
 	@Test
 	public void test() throws InterruptedException {
 
+		driver.findElement(By.xpath("//div[text()='Log in']")).click();
 		driver.findElement(By.id("email")).sendKeys(emailId);
 		driver.findElement(By.id("password")).sendKeys(password);
-		driver.findElement(By.xpath("//div[text()='Continue']")).click();
+		driver.findElement(By.xpath("(//div[text()='Log in'])[2]")).click();
 
-		Assert.assertTrue(driver.findElement(By.xpath("//div[text()='Home']")).isDisplayed(),
+		Assert.assertTrue(driver.findElement(By.xpath("//span[text()='Home']")).isDisplayed(),
 				"Home Page is not displayed");
 
 		By elementLocator = By.xpath("//img[@loading='auto']");
